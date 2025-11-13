@@ -1,20 +1,32 @@
 <!DOCTYPE html>
-<html
-        lang="ko"
-        xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>카드 딜러</title>
+    <!-- ✅ Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<h3>카드</h3>
-<div style="display: flex;">
-    <div th:each="card : ${cards}">
-        <img
-                th:src="@{/images/{imageName}(imageName=${card})}"
-                alt="카드 이미지"
-                width="200px">
+<body class="bg-gradient-to-b from-blue-100 to-indigo-200 min-h-screen flex flex-col items-center p-6">
+
+<!-- 제목 -->
+<h3 class="text-3xl font-bold mb-8 text-indigo-700">카드 딜러</h3>
+
+<!-- 카드 컨테이너 -->
+<div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 mb-10">
+    <div th:each="card : ${cards}"
+         class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition duration-300 p-4 flex justify-center items-center">
+        <img th:src="@{/images/{imageName}(imageName=${card})}"
+             alt="카드 이미지"
+             class="w-40 h-auto object-contain rounded-lg">
     </div>
 </div>
+
+<!-- 다시 뽑기 버튼 -->
+<button
+        onclick="window.location.reload()"
+        class="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-full shadow-md hover:bg-indigo-700 hover:shadow-lg transition duration-300">
+    🔁 다시 뽑기
+</button>
+
 </body>
 </html>
