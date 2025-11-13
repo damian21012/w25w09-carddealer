@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html
+        lang="ko"
+        xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>카드 딜러</title>
+</head>
+<body>
+<h3>카드</h3>
+<div style="display: flex;">
+    <div th:each="card : ${cards}">
+        <img
+                th:src="@{/images/{imageName}(imageName=${card})}"
+                alt="카드 이미지"
+                width="200px">
+    </div>
+</div>
+</body>
+</html>
